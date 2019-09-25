@@ -1,0 +1,155 @@
+.project-create{
+
+    height: 100%;  
+
+    overflow: hidden;  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
+
+    margin: 0px;  /*removes default style*/
+
+    display: flex;  /*enables flex content for its children*/
+
+    box-sizing: border-box;
+
+  }
+
+ 
+
+  .column-normal{
+
+   
+    display: flex;
+
+    flex-direction: column;  /*places the left and right headers above the bottom content*/
+
+    padding: 10px 20px 0px 20px;
+
+}
+
+.column {
+
+   
+    display: flex;
+
+    flex-direction: column;  /*places the left and right headers above the bottom content*/
+
+    padding: 10px 20px 0px 20px;
+
+}
+
+.left-tab{
+
+    margin:20px;
+
+}
+
+ 
+
+.card-button{
+
+   text-align: center;
+
+   border-radius: 6px;
+
+   height:35px;  
+
+   font-family: OpenSans-Semibold;
+
+   font-size: 16px; 
+
+   font-style: normal;
+
+   font-stretch: normal;
+
+}
+
+.insight{
+
+    background-color: #39526b;
+
+}
+
+ 
+
+.card-button .insight-text{
+
+    margin-top: 5px;
+
+    color: white;
+
+}
+
+ 
+
+.card-button .discuss-text{
+
+    color: #39526b;
+
+    font-size: 14px;
+
+    margin-top: 5px;
+
+    font-weight: 550;
+
+}
+
+ 
+
+.card-header{
+
+   font-family: OpenSans-Semibold;  
+
+   text-align: left;
+
+   color: #39526b;
+
+   font-weight: 600;
+
+   font-size: 15px;
+
+   font-style: normal;
+
+   font-stretch: normal;
+
+   background-color: #f7fafc
+
+}
+
+.card-body{
+
+    font-family: OpenSans-Semibold;  
+
+   text-align: left;
+
+   font-size: 16px; 
+
+   font-style: normal;
+
+   font-stretch: normal;
+
+}
+
+.label-subtitle{
+    color: grey;
+    font-size: 15px;
+}
+
+
+.toggle{
+    float: right;
+    color:"#5aaaf6"
+}
+
+.createButton{
+    background-color: #133556;
+    color: #fff;
+    float: right;
+    border-color: #fff;
+}
+.cancelButton{
+    background-color: #fff;
+    border-color: grey;
+    color: #133556;
+}
+.addUser{
+    width: 300px;
+}
