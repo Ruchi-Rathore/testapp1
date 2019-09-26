@@ -81,19 +81,21 @@
       <form [formGroup]="createProjectForm" (ngSubmit)="save()" novalidate>
         <div class="form-group">
           <label class="label label-default"> PROJECT TITLE</label>
-          <input type="text" required
+          <input type="text" required (ngModelChange)="dataChanged($event)"
             [ngClass]="{'has-error':  (createProjectForm.controls['projectTitleVal'].touched ||createProjectForm.controls['projectTitleVal'].dirty) && !createProjectForm.controls['projectTitleVal'].valid}"
             [(ngModel)]='projectTitle' formControlName='projectTitleVal' class="form-control" name=" Project">
           <div *ngIf="createProjectForm.get('projectTitleVal').invalid && (createProjectForm.get('projectTitleVal').dirty ||createProjectForm.get('projectTitleVal').touched)">
-             <span class="text-danger" *ngIf="createProjectForm.controls['projectTitleVal'].errors?.required">Project Title is required.</span>
+             <span class="text-danger" *ngIf="createProjectForm.controls['projectTitleVal'].errors?.required">Project title is required.</span>
+            <span class="text-danger" *ngIf="wordCountError">Project title must contain only 150 words.</span>
            </div>
         </div>
         <div class="form-group">
           <label class="label label-default">PROJECT DETAILS</label>
-          <textarea required  [ngClass]="{'has-error':  (createProjectForm.controls['projectDetailsVal'].touched ||createProjectForm.controls['projectDetailsVal'].dirty) && !createProjectForm.controls['projectDetailsVal'].valid}" class="form-control" [(ngModel)]='projectDetails' formControlName='projectDetailsVal'> </textarea>
+          <textarea required  (ngModelChange)="dataChangedtextArea($event)" [ngClass]="{'has-error':  (createProjectForm.controls['projectDetailsVal'].touched ||createProjectForm.controls['projectDetailsVal'].dirty) && !createProjectForm.controls['projectDetailsVal'].valid}" class="form-control" [(ngModel)]='projectDetails' formControlName='projectDetailsVal'> </textarea>
           <div *ngIf="createProjectForm.get('projectDetailsVal').invalid && (createProjectForm.get('projectDetailsVal').dirty ||createProjectForm.get('projectDetailsVal').touched)">
-               <span class="text-danger" *ngIf="createProjectForm.controls['projectDetailsVal'].errors?.required">Project Details is required.</span>
-             </div>
+              <span class="text-danger" *ngIf="createProjectForm.controls['projectDetailsVal'].errors?.required">Project detail is required.</span>
+            </div>
+            <span class="text-danger" *ngIf="detailCountError">Project detail must contain only 250 words.</span>
         </div>
         <div class="form-group">
           <label class="label label-default">PRIVACY SETTINGS</label>
@@ -108,7 +110,7 @@
             </div>
           </div>
         </div>
-        <!-- 
+        <!--
         <div class="form-group">
 
           <label class="label label-default"> PROJECT DESCRIPTION</label>

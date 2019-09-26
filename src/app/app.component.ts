@@ -14,14 +14,14 @@ export class AppComponent {
   controlledAccess: boolean = false;
   createProjectForm: FormGroup;
   errorMessage: any;
-
+  wordCountError: boolean = false;
+  detailCountError: boolean = false;
   constructor(public fb: FormBuilder, private apiCall: ApiService){
 
   }
 
    chkwordRange(max: number): ValidatorFn {
     return (control: AbstractControl): { [key: string]: boolean } | null => {
-      console.log(control.value.split(" ").length)
         if (control.value !== undefined || control.value > max) {
             return { 'wordRange': true };
         }
@@ -34,6 +34,22 @@ export class AppComponent {
       projectTitleVal: [Validators.required],
       projectDetailsVal: [Validators.required]
     });
+  }
+
+  dataChanged(e) {
+    if (e.split(' ').length > 150) {
+      this.wordCountError = true;
+    } else {
+      this.wordCountError = false;
+    }
+  }
+
+  dataChangedtextArea(e) {
+    if (e.split(' ').length > 250) {
+      this.detailCountError = true;
+    } else {
+      this.detailCountError = false;
+    }
   }
 
   onChangeSwitch(e){
