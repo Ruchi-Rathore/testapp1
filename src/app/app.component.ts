@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ApiService } from 'src/service/api-service';
-
+import cityData from '../data/city';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +16,9 @@ export class AppComponent {
   errorMessage: any;
   wordCountError: boolean = false;
   detailCountError: boolean = false;
+  searchText: string;
+  searchData: any = [];
+  cityJsonData: any = cityData;
   constructor(public fb: FormBuilder, private apiCall: ApiService){
 
   }
@@ -34,26 +37,43 @@ export class AppComponent {
       projectTitleVal: [Validators.required],
       projectDetailsVal: [Validators.required]
     });
+
+    console.log('cityData:', cityData)
   }
 
-  dataChanged(e) {
-    if (e.split(' ').length > 150) {
+  dataChanged(value) {
+    if (value && value.split(' ').length > 150) {
       this.wordCountError = true;
     } else {
       this.wordCountError = false;
     }
   }
 
-  dataChangedtextArea(e) {
-    if (e.split(' ').length > 250) {
+  dataChangedtextArea(value) {
+    if (value && value.split(' ').length > 250) {
       this.detailCountError = true;
     } else {
       this.detailCountError = false;
     }
   }
 
-  onChangeSwitch(e){
-    this.controlledAccess = e;
+  onChangeSwitch(value){
+    this.controlledAccess = value;
+  }
+
+  searchResult(value) {
+    this.searchData = [];
+    if (value) {
+      cityData.filter(item => {
+        if (item.cityName.toLowerCase().match(value.toLowerCase())) {
+          this.searchData.push(item);
+        }
+      });
+    }
+  }
+
+  selectedCity(value) {
+    console.log(value);
   }
 
 save(){
