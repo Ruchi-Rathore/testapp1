@@ -42,7 +42,7 @@ export class AppComponent {
   }
 
   dataChanged(value) {
-    if (value && value.split(' ').length > 150) {
+    if (value && value.split(' ').length > 10) {
       this.wordCountError = true;
     } else {
       this.wordCountError = false;
@@ -50,7 +50,7 @@ export class AppComponent {
   }
 
   dataChangedtextArea(value) {
-    if (value && value.split(' ').length > 250) {
+    if (value && value.split(' ').length > 10) {
       this.detailCountError = true;
     } else {
       this.detailCountError = false;

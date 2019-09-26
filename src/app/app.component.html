@@ -1,24 +1,24 @@
 <div class="project-create">
   <div class="col-md-3 left-tab">
-    <div class="column">
+    <div class="column leftmargin">
       <div class="card card-button insight">
-        <button type="button" class="btn btn-info">MY PROJECTS</button>
+        <button type="button" class="btn leftSidebar">MY PROJECTS</button>
       </div>
     </div>
     <div class="column">
       <div class="card card-button insight">
-        <button type="button" class="btn btn-info">Add Medialink</button>
+        <button type="button" class="btn leftSidebar">Add Medialink</button>
       </div>
     </div>
     <div class="column">
       <div class="card card-button insight">
-        <button type="button" class="btn btn-info">Add Metadata</button>
+        <button type="button" class="btn leftSidebar">Add Metadata</button>
         <!-- <div class="insight-text">Add Metadata</div>                  -->
       </div>
     </div>
     <div class="column">
       <div class="card card-button insight">
-        <button type="button" class="btn btn-info">Add Dataset</button>
+        <button type="button" class="btn leftSidebar">Add Dataset</button>
       </div>
     </div>
     <div class="column">
@@ -34,22 +34,22 @@
   </div>
 
   <div class="col-md-5 project-content column">
-    <label>CREATE NEW PROJECT</label>
+    <label class="newProject">CREATE NEW PROJECT</label>
     <div class="app-project-card">
       <form [formGroup]="createProjectForm" (ngSubmit)="save()" novalidate>
         <div class="form-group">
-          <label class="label label-default"> PROJECT TITLE</label>
+          <label class="label label-default title"> PROJECT TITLE</label>
           <input type="text" required (ngModelChange)="dataChanged($event)"
             [ngClass]="{'has-error':  (createProjectForm.controls['projectTitleVal'].touched ||createProjectForm.controls['projectTitleVal'].dirty) && !createProjectForm.controls['projectTitleVal'].valid}"
             [(ngModel)]='projectTitle' formControlName='projectTitleVal' class="form-control" name=" Project">
           <div *ngIf="createProjectForm.get('projectTitleVal').invalid && (createProjectForm.get('projectTitleVal').dirty ||createProjectForm.get('projectTitleVal').touched)">
              <span class="text-danger" *ngIf="createProjectForm.controls['projectTitleVal'].errors?.required">Project
               title is required.</span>
-            <span class="text-danger" *ngIf="wordCountError">Project title must contain only 150 words.</span>
           </div>
+          <span class="text-danger" *ngIf="wordCountError">Project title must contain only 150 words.</span>
         </div>
         <div class="form-group">
-          <label class="label label-default">PROJECT DETAILS</label>
+          <label class="label label-default title">PROJECT DETAILS</label>
           <textarea required (ngModelChange)="dataChangedtextArea($event)"
             [ngClass]="{'has-error':  (createProjectForm.controls['projectDetailsVal'].touched ||createProjectForm.controls['projectDetailsVal'].dirty) && !createProjectForm.controls['projectDetailsVal'].valid}"
             class="form-control" [(ngModel)]='projectDetails' formControlName='projectDetailsVal'> </textarea>
@@ -60,7 +60,7 @@
           <span class="text-danger" *ngIf="detailCountError">Project detail must contain only 250 words.</span>
         </div>
         <div class="form-group">
-          <label class="label label-default">PRIVACY SETTINGS </label>
+          <label class="label label-default title">PRIVACY SETTINGS </label>
           <div>
             <label class="label-subtitle">Define your project privacy preferences</label>
           </div>
@@ -95,7 +95,7 @@
   </div>
 
   <div class="col-md-4 right-tab">
-    <div class="column">
+    <div class="column rightmargin">
       <div class="card card-button insight">
         <div class="insight-text">Invite Members</div>
       </div>
@@ -114,31 +114,57 @@
       </div>
     </div>
     <div class="column">
-      <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Link 1</a>
-          <a class="dropdown-item" href="#">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Link 1</a>
-          <a class="dropdown-item" href="#">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
-        </div>
-      </div>
-    </div>
-    <div class="column">
       <div class="card card-button insight">
         <div class="insight-text">User List</div>
+        <div>
+          <table class="table table-hover tabularMargin">
+              <thead>
+                <tr>
+                  <th>UserList</th>
+                  <th>Rights</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>
+                      <div class="checkbox user-rights">
+                          <label><input type="checkbox" value=""> Read</label>
+                          <label><input type="checkbox" value=""checked> Write</label>
+                          <label><input type="checkbox" value="">Admin</label>
+                        </div>
+                  </td>
+                  <td><input type="submit" value="Delete"></td>
+                </tr>
+                <tr>
+                  <td>Jay</td>
+                  <td>
+                      <div class="checkbox user-rights">
+                          <label><input type="checkbox" value=""> Read</label>
+                          <label><input type="checkbox" value=""> Write</label>
+                          <label><input type="checkbox" value="" checked>Admin</label>
+                        </div>
+                  </td>
+                      <td><input type="submit" value="Delete"></td>
+                </tr>
+                <tr>
+                  <td>July</td>
+                  <td>
+                      <div class="checkbox user-rights">
+                          <label><input type="checkbox" value=""checked> Read</label>
+                          <label><input type="checkbox" value=""> Write</label>
+                          <label><input type="checkbox" value="">Admin</label>
+                        </div>
+                  </td>
+                      <td><input type="submit" value="Delete"></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
