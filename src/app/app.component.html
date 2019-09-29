@@ -100,11 +100,24 @@
         <div class="insight-text">Invite Members</div>
       </div>
       <div>
-        <label>Add User</label>
+        <label >Add User</label>
           <div class="row">
             <input type="text" [(ngModel)]='searchText' (ngModelChange)="searchResult($event)"
               class="form-control addUser" />
-            <input type="Button" class='addbtn' value="ADD" />
+
+                   <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item">Read </a>
+                    <a class="dropdown-item" >Write</a>
+                    <a class="dropdown-item" >Auther / Admin</a>
+                  </div>
+                </div>
+
+
+            <input type="Button" class="addbtn cancelButton btn btn-primary" value="ADD" />
           </div>
         <ul *ngIf="searchData" class='myUL'>
           <li class='li' *ngFor="let cityjson of searchData" (click)='selectedCity(cityjson)'>
@@ -126,39 +139,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>John</td>
+                <tr *ngFor="let item of addedUserList">
+                  <td>{{item.name}}</td>
                   <td>
                       <div class="checkbox user-rights">
-                          <label><input type="checkbox" value=""> Read</label>
-                          <label><input type="checkbox" value=""checked> Write</label>
-                          <label><input type="checkbox" value="">Admin</label>
+                          <label><input type="checkbox" value="" [checked]="item.rights===1"> Read</label>
+                          <label><input type="checkbox" value="" [checked]="item.rights===2"> Write</label>
+                          <label><input type="checkbox" value="" [checked]="item.rights===3">Admin</label>
                         </div>
                   </td>
-                  <td><input type="submit" value="Delete"></td>
-                </tr>
-                <tr>
-                  <td>Jay</td>
-                  <td>
-                      <div class="checkbox user-rights">
-                          <label><input type="checkbox" value=""> Read</label>
-                          <label><input type="checkbox" value=""> Write</label>
-                          <label><input type="checkbox" value="" checked>Admin</label>
-                        </div>
-                  </td>
-                      <td><input type="submit" value="Delete"></td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>
-                      <div class="checkbox user-rights">
-                          <label><input type="checkbox" value=""checked> Read</label>
-                          <label><input type="checkbox" value=""> Write</label>
-                          <label><input type="checkbox" value="">Admin</label>
-                        </div>
-                  </td>
-                      <td><input type="submit" value="Delete"></td>
-                </tr>
+                  <td><input type="submit" class="cancelButton btn btn-primary" value="Delete"></td>
+                </tr>  
               </tbody>
             </table>
         </div>

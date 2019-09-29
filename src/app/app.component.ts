@@ -19,6 +19,19 @@ export class AppComponent {
   searchText: string;
   searchData: any = [];
   cityJsonData: any = cityData;
+  addedUserList: any = [{
+    name: 'John',
+    rights: 1
+  },
+  {
+    name: 'Jay',
+    rights: 3
+  },
+  {
+    name: 'July',
+    rights: 2
+  }];
+
   constructor(public fb: FormBuilder, private apiCall: ApiService){
 
   }
@@ -74,6 +87,8 @@ export class AppComponent {
 
   selectedCity(value) {
     console.log(value);
+    this.searchText = value.cityName;
+    this.searchData = [];
   }
 
 save(){
